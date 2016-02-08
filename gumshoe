@@ -1,0 +1,15 @@
+#!/bin/bash
+# Gumshoe bot startup script
+
+# Make sure we've got what we need
+[ ! -d "$GUMSHOE_HOME" ] && \
+    echo "Cannot find GUMSHOE_HOME $GUMSHOE_HOME" && exit 1
+[ ! -e "$GART_HOME/gart" ] && \
+    echo "Cannot find gart in $GART_HOME" && exit 1
+
+# Set up the path (just include bot-ext)
+[ -z "$GART_PATH" ] && GART_PATH="${GUMSHOE_HOME}"
+export GART_PATH
+
+# Run the bot
+$GART_HOME/gart start
